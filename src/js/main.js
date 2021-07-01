@@ -2,6 +2,7 @@ const $container = document.querySelector(".grid");
 
 let allDivs;
 let invaders = [];
+let defender = 229;
 
 const createGridAndInvaders = () => {
     
@@ -43,11 +44,12 @@ const createGridAndInvaders = () => {
             }
 
         }
-
-        allDivs = document.querySelectorAll(".grid > div");
+        console.log(invaders);
+        allDivs = document.querySelectorAll(".grid div");
         invaders.forEach( invader =>{
             allDivs[invader].classList.add("invader");
         });
+        allDivs[defender].classList.add("defender");
         
 }
 
