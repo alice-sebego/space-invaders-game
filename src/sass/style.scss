@@ -8,12 +8,34 @@
 }
 
 header{
-    padding: 1vh 2vw;
+    padding: 2vh 2vw;
     text-align: center;
+    color: $light-color;
+    background: $primary-color;
+    // line-height: 2.5em;
+
+    hr{
+        border: 1px solid $dark-color;
+        width: 65%;
+        margin: 1vh auto;
+    }
+
+    h1{
+        text-transform:uppercase;
+        font-weight: 600;
+    }
+
+    h2{
+        font-size: small;
+        font-weight: 400;
+        letter-spacing: .08em;
+    }
 }
 
 h3{
     text-align: center;
+    margin: 2vh 0;
+    text-transform: uppercase;
 }
 
 .grid{
