@@ -54,3 +54,30 @@ const createGridAndInvaders = () => {
 }
 
 createGridAndInvaders();
+
+const moveDefender = (event) => {
+
+    event.preventDefault();
+
+    allDivs[defender].classList.remove("defender");
+
+    switch (event.code) {
+        case "ArrowLeft":
+            if(defender > 220){
+                defender -= 1;
+            }
+            break;
+        case "ArrowRight":
+            if(defender < 239){
+                defender += 1;
+            }
+            break;
+        default:
+            console.log("Une erreur s'est produite");
+            break;
+    }
+
+    allDivs[defender].classList.add("defender");
+}
+
+document.addEventListener("keydown", moveDefender);
