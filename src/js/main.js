@@ -28,7 +28,6 @@ const createGridAndInvaders = () => {
             } else {
 
                 const block = document.createElement("div");
-                block.setAttribute("data-left", "true");
                 $container.appendChild(block);
                 indexAttr ++;
 
@@ -93,6 +92,40 @@ let getDownRight = true;
 const moveInvaders = () => {
 
     for(let i = 0; i < invaders.length; i++){
+      
+        if(allDivs[invaders[i]].getAttribute("data-right") === "true"){
+          
+            if(getDownRight){
+
+              direction = 20;
+              setTimeout(() => getDownRight = false, 50);
+
+            } else if(!getDownRight){
+
+              direction = -1;
+            }
+
+            getDownLeft= true;
+
+        } else if(allDivs[invaders[i]].getAttribute("data-left") === "true"){
+
+            if(getDownLeft){
+
+                direction = 20;
+                setTimeout(() => getDownLeft = false, 50);
+
+            } else if(!getDownLeft){
+
+                direction = 1;
+                
+            }
+
+            getDownRight = true;
+
+        }  
+    }
+    
+    for(let i = 0; i < invaders.length; i++){
         allDivs[invaders[i]].classList.remove("invader");
     }
 
@@ -106,4 +139,4 @@ const moveInvaders = () => {
 
 }
 
-let invaderId = setInterval(moveInvaders, 500);
+invaderId = setInterval(moveInvaders, 500);
