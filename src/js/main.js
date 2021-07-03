@@ -2,8 +2,9 @@ const $container = document.querySelector(".grid");
 
 let allDivs;
 let invaders = [];
-let defender = 229;
+let defenderPosition= 229;
 let direction = 1;
+let width = 20;
 
 const createGridAndInvaders = () => {
     
@@ -57,34 +58,34 @@ const createGridAndInvaders = () => {
         
         invaders.forEach( invader => allDivs[invader].classList.add("invader") );
 
-        allDivs[defender].classList.add("defender");
+        allDivs[defenderPosition].classList.add("defender");
         
 }
 
 createGridAndInvaders();
 
-const moveDefender = (event) => {
+const movedefender= (event) => {
 
     event.preventDefault();
 
-    allDivs[defender].classList.remove("defender");
+    allDivs[defenderPosition].classList.remove("defender");
 
     switch (event.code) {
         case "ArrowLeft":
-            if(defender > 220) defender -= 1;
+            if(defenderPosition > 220) defenderPosition -= 1;
             break;
         case "ArrowRight":
-            if(defender < 239) defender += 1;
+            if(defenderPosition < 239) defenderPosition += 1;
             break;
         default:
             console.log("Une erreur s'est produite");
             break;
     }
 
-    allDivs[defender].classList.add("defender");
+    allDivs[defenderPosition].classList.add("defender");
 }
 
-document.addEventListener("keydown", moveDefender);
+document.addEventListener("keydown", movedefender);
 
 let getDownLeft = true;
 let getDownRight = true;
@@ -117,7 +118,7 @@ const moveInvaders = () => {
             } else if(!getDownLeft){
 
                 direction = 1;
-                
+
             }
 
             getDownRight = true;
@@ -139,4 +140,27 @@ const moveInvaders = () => {
 
 }
 
-invaderId = setInterval(moveInvaders, 500);
+//invaderId = setInterval(moveInvaders, 500);
+
+
+const fire = (event) => {
+
+    event.preventDefault();
+
+    let laserId;
+    let currentLaser = defenderPosition; 
+
+    const moveFire = () => {
+        allDivs[currentLaser].classList.remove("laser");
+        currentLaser -= width;
+        allDivs[currentLaser].classList.add("laser");
+    }
+    
+    if(event.code === "Space"){
+        laserId = setInterval(()=>{
+            moveFire() ;
+        }, 100);
+    }
+}
+
+document.addEventListener("keyup", fire);
