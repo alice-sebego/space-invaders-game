@@ -151,11 +151,26 @@ const fire = (event) => {
     let currentLaser = defenderPosition; 
 
     const moveFire = () => {
+
         allDivs[currentLaser].classList.remove("laser");
         currentLaser -= width;
         allDivs[currentLaser].classList.add("laser");
 
+        if(allDivs[currentLaser].classList.contains("invader")){
+            
+            allDivs[currentLaser].classList.remove("laser");
+            allDivs[currentLaser].classList.remove("invader");
+            allDivs[currentLaser].classList.add("boom");
+
+            invaders = invaders.filter(invader => invader !== currentLaser);
+
+            setTimeout(() => allDivs[currentLaser].classList.remove("boom"), 250);
+
+            clearInterval(laserId);
+        }
+
         if(currentLaser < width){
+            
             clearInterval(laserId);
             setTimeout(() => allDivs[currentLaser].classList.remove("laser"), 100);
 
@@ -165,6 +180,7 @@ const fire = (event) => {
     if(event.code === "Space"){
         laserId = setInterval(() => moveFire(), 100);
     }
+    
 }
 
 document.addEventListener("keyup", fire);
