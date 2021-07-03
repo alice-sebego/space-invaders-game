@@ -154,12 +154,16 @@ const fire = (event) => {
         allDivs[currentLaser].classList.remove("laser");
         currentLaser -= width;
         allDivs[currentLaser].classList.add("laser");
+
+        if(currentLaser < width){
+            clearInterval(laserId);
+            setTimeout(() => allDivs[currentLaser].classList.remove("laser"), 100);
+
+        }
     }
     
     if(event.code === "Space"){
-        laserId = setInterval(()=>{
-            moveFire() ;
-        }, 100);
+        laserId = setInterval(() => moveFire(), 100);
     }
 }
 
