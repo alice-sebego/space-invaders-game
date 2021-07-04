@@ -1,10 +1,14 @@
 const $container = document.querySelector(".grid");
+const $score = document.querySelector("h3");
 
 let allDivs;
 let invaders = [];
-let defenderPosition= 229;
+let defenderPosition = 229;
 let direction = 1;
 let width = 20;
+let destroyedInvaders = 1;
+
+const displayScore = () => destroyedInvaders ++ ;
 
 const createGridAndInvaders = () => {
     
@@ -64,7 +68,7 @@ const createGridAndInvaders = () => {
 
 createGridAndInvaders();
 
-const movedefender= (event) => {
+const movedefender = (event) => {
 
     event.preventDefault();
 
@@ -78,7 +82,7 @@ const movedefender= (event) => {
             if(defenderPosition < 239) defenderPosition += 1;
             break;
         default:
-            console.log("Une erreur s'est produite");
+            console.log("Autre opération");
             break;
     }
 
@@ -140,7 +144,7 @@ const moveInvaders = () => {
 
 }
 
-//invaderId = setInterval(moveInvaders, 500);
+invaderId = setInterval(moveInvaders, 500);
 
 
 const fire = (event) => {
@@ -162,6 +166,7 @@ const fire = (event) => {
             allDivs[currentLaser].classList.remove("invader");
             allDivs[currentLaser].classList.add("boom");
 
+            $score.innerHTML = `Score : ${displayScore()}`;
             invaders = invaders.filter(invader => invader !== currentLaser);
 
             setTimeout(() => allDivs[currentLaser].classList.remove("boom"), 250);
@@ -180,7 +185,7 @@ const fire = (event) => {
     if(event.code === "Space"){
         laserId = setInterval(() => moveFire(), 100);
     }
-    
+
 }
 
 document.addEventListener("keyup", fire);
