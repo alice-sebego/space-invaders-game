@@ -26,11 +26,11 @@ header{
         font-family: $logo-font;
 
         &::before{
-            @include handle-font-awesome(.3em, $dark-color, '\f50e');
+            @include handle-font-awesome($font-awesome-brand, .3em, $dark-color, '\f50e');
         }
 
         &::after{
-            @include handle-font-awesome(.3em, $dark-color, '\f50d' );
+            @include handle-font-awesome($font-awesome-brand, .3em, $dark-color, '\f50d' );
         }
     }
 
@@ -98,4 +98,12 @@ h3{
 
 .laser{
     background: $laser;
+}
+
+#victory{
+
+    i{
+        color: $laser;
+    }
+
 }

@@ -8,7 +8,11 @@ let direction = 1;
 let width = 20;
 let destroyedInvaders = 1;
 
-const displayScore = () => destroyedInvaders ++ ;
+const displayScore = () => {
+    return destroyedInvaders < 10 ?  
+    `0${destroyedInvaders ++}`:
+    destroyedInvaders ++;
+} ;
 
 const createGridAndInvaders = () => {
     
@@ -142,6 +146,11 @@ const moveInvaders = () => {
         allDivs[invaders[i]].classList.add("invader");
     }
 
+    if(allDivs[defenderPosition].classList.contains("invader", "defenser")){
+        $score.innerHTML = `Score : ${displayScore()} <br> <span id="game-over"><i class="far fa-grimace"></i> Aïe ! Game Over <i class="far fa-grimace"></i></span>`,
+        clearInterval(invaderId)
+    }
+
 }
 
 invaderId = setInterval(moveInvaders, 500);
@@ -166,7 +175,13 @@ const fire = (event) => {
             allDivs[currentLaser].classList.remove("invader");
             allDivs[currentLaser].classList.add("boom");
 
-            $score.innerHTML = `Score : ${displayScore()}`;
+            destroyedInvaders === 36 ?(
+                $score.innerHTML = `Score : ${displayScore()} <br> <span id="victory"><i class="fas fa-trophy"></i> Bravo ! Vous avez gagné <i class="fas fa-trophy"></i></span>`,
+                clearInterval(invaderId)
+            ):(
+                $score.innerHTML = `Score : ${displayScore()}`
+            );
+            
             invaders = invaders.filter(invader => invader !== currentLaser);
 
             setTimeout(() => allDivs[currentLaser].classList.remove("boom"), 250);

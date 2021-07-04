@@ -1,5 +1,5 @@
-@mixin handle-font-awesome ($padding, $color, $content) {
-    font-family: $font-awesome;
+@mixin handle-font-awesome ($font, $padding, $color, $content) {
+    font-family: $font;
     padding: $padding;
     color: $color;
     content: $content;
