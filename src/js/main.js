@@ -151,6 +151,13 @@ const moveInvaders = () => {
         clearInterval(invaderId);
     }
 
+    for(let i = 0; i < invaders.length; i++){
+        if(invaders[i] > allDivs.length - width){
+            $score.innerHTML = `Score : ${displayScore() - 1} <br> <span id="game-over"><i class="far fa-grimace"></i> Aïe ! Game Over <i class="far fa-grimace"></i></span>`,
+            clearInterval(invaderId); 
+        }
+    }
+
 }
 
 invaderId = setInterval(moveInvaders, 500);
