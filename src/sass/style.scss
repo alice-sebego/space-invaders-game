@@ -102,8 +102,15 @@ h3{
 
 #victory{
 
-    i{
-        color: $laser;
+    svg{
+        color: $success;
     }
 
+}
+
+#game-over{
+
+    svg{
+        color: $boom;
+    }
 }

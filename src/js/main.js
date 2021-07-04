@@ -147,8 +147,8 @@ const moveInvaders = () => {
     }
 
     if(allDivs[defenderPosition].classList.contains("invader", "defenser")){
-        $score.innerHTML = `Score : ${displayScore()} <br> <span id="game-over"><i class="far fa-grimace"></i> Aïe ! Game Over <i class="far fa-grimace"></i></span>`,
-        clearInterval(invaderId)
+        $score.innerHTML = `Score : ${displayScore() - 1} <br> <span id="game-over"><i class="far fa-grimace"></i> Aïe ! Game Over <i class="far fa-grimace"></i></span>`,
+        clearInterval(invaderId);
     }
 
 }

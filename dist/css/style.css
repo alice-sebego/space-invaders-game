@@ -76,7 +76,10 @@ h3 {
 .laser {
   background: #f7e711; }
 
-#victory i {
-  color: #f7e711; }
+#victory svg {
+  color: yellowgreen; }
+
+#game-over svg {
+  color: #f11a13; }
 
 /*# sourceMappingURL=style.css.map */
