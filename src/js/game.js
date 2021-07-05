@@ -95,27 +95,6 @@ export default class Game {
         this.allDivs[this.defenderPosition].classList.add("defender");
     }
 
-    movedefender = (event) => {
-
-        event.preventDefault();
-
-        this.allDivs[this.defenderPosition].classList.remove("defender");
-    
-        switch (event.code) {
-            case "ArrowLeft":
-                if(this.defenderPosition > 220) this.defenderPosition -= 1;
-                break;
-            case "ArrowRight":
-                if(this.defenderPosition < 239) this.defenderPosition += 1;
-                break;
-            default:
-                console.log("Autre opération");
-                break;
-        }
-    
-        this.allDivs[this.defenderPosition].classList.add("defender");
-      
-    }
 
     moveInvaders = () => {
 

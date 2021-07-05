@@ -33,6 +33,7 @@ const movedefender = (event) => {
     app.allDivs[app.defenderPosition].classList.add("defender");
   
 }
+
 // Listening event of user's keydown in order to move defender
 document.addEventListener("keydown", movedefender);
 
@@ -86,5 +87,6 @@ const fire = (event) => {
     }
 
 }
+
 // Listening keyup event from user when s/he's shooting
 document.addEventListener("keyup", fire);
