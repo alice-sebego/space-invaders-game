@@ -10,6 +10,7 @@ const levels = [500, 250, 150];
 // Set more accessibility on buttons of nav
 $buttons.forEach(button => button.setAttribute("tabindex", "0"));
 
+// Lauch game depending level's choice of user
 for(let i = 0; i < levels.length; i ++){
 
     $buttons[i].addEventListener("click", () =>{
