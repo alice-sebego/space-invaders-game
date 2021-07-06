@@ -1,3 +1,7 @@
+/**
+ * Build a game's session
+ * @class Game
+ */
 export default class Game {
 
     allDivs;
@@ -10,6 +14,13 @@ export default class Game {
     getDownLeft = true;
     getDownRight = true;
 
+    /**
+     * @constructor
+     * @param {HTMLDivElement} container [space of game with area : 500px²]
+     * @param {HTMLHeadingElement} score [Display user's score]
+     * @param {Function} invaderId [Empty variable that's store a setInterval()] 
+     * @param {number} speed [speed of remove of invaders] 
+     */
     constructor(container, score, invaderId, speed){
         this.container = container;
         this.score = score;
@@ -17,13 +28,22 @@ export default class Game {
         this.speed = speed;
     }
 
+    /**
+     * Increment score of user when (s)he's shot an invader
+     * @function displayScore
+     * @returns {number} 
+     */
     displayScore = () => {
         return this.destroyedInvaders < 10 ?  
         `0${this.destroyedInvaders ++}`:
         this.destroyedInvaders ++;
     }
 
-    createGridAndInvaders = () => {
+    /**
+     * Create grid on container which contains invaders and a defender
+     * @function buildGridAndInvadersAndDefender
+     */
+    buildGridAndInvadersAndDefender = () => {
 
         for(let i = 0; i < 240; i++){
             
@@ -74,8 +94,14 @@ export default class Game {
         this.invaders.forEach( invader => this.allDivs[invader].classList.add("invader") );
 
         this.allDivs[this.defenderPosition].classList.add("defender");
+    
     }
 
+    /**
+     * Allow user's to move defender on the container
+     * @function movedefender
+     * @param {Event} event 
+     */
     movedefender = (event) => {
 
         event.preventDefault();
@@ -95,6 +121,11 @@ export default class Game {
       
     }
 
+    /**
+     * Handle user's actions with keyboard
+     * @function handleEvent
+     * @param {Event} event 
+     */
     handleEvent = (event) => {
         
         switch(event.type) {
@@ -108,6 +139,10 @@ export default class Game {
 
     }
 
+    /**
+     * Allow invaders to move on the container
+     * @function moveInvaders
+     */
     moveInvaders = () => {
 
         for(let i = 0; i < this.invaders.length; i++){
@@ -170,11 +205,23 @@ export default class Game {
     
     }
 
+    /**
+     * Handle move of invaders and their speed move
+     * @function intervalInvaderId
+     * @returns {Function} this.invaderId that's storing a setInterval()
+     */
     intervalInvaderId = () => {
-         this.invaderId = setInterval(this.moveInvaders, this.speed);
-         return this.invaderId;
+
+        this.invaderId = setInterval(this.moveInvaders, this.speed);
+        return this.invaderId;
+
     }
 
+    /**
+     * Handle user's shoots 
+     * @function fire
+     * @param {Event} event 
+     */
     fire = (event) => {
 
         event.preventDefault();

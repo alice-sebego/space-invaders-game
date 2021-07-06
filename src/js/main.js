@@ -5,7 +5,7 @@ const $score = document.querySelector("h3");
 let invaderId;
 
 const app = new Game($container, $score, invaderId, 500);
-app.createGridAndInvaders();
+app.buildGridAndInvadersAndDefender();
 app.intervalInvaderId();
 
 // Listening user's actions
