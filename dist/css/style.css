@@ -34,6 +34,29 @@ header {
     font-weight: 400;
     letter-spacing: .08em; }
 
+nav {
+  width: 30%;
+  margin: 1vh auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; }
+  nav .nav {
+    width: 30%;
+    padding: .4em;
+    font-size: .9em;
+    border-radius: .5em;
+    border: none;
+    font-weight: bold;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: #eee; }
+  nav .nav:nth-child(1) {
+    background: #14810b; }
+  nav .nav:nth-child(2) {
+    background: #076286; }
+  nav .nav:nth-child(3) {
+    background: #af0808; }
+
 h3 {
   text-align: center;
   margin: 2vh 0;

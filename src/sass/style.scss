@@ -41,6 +41,40 @@ header{
     }
 }
 
+nav{
+
+    width: 30%;
+    margin: 1vh auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .nav{
+        width: 30%;
+        padding: .4em;
+        font-size: .9em;
+        border-radius: .5em;
+        border: none;
+        font-weight: bold;
+        letter-spacing: .02em;
+        text-transform: uppercase;
+        color: $light-color;
+    }
+
+    .nav:nth-child(1){
+        background: $easy;
+    }
+
+    .nav:nth-child(2){
+        background: $medium;
+    }
+
+    .nav:nth-child(3){
+        background: $hard;
+    }
+
+}
+
 h3{
     text-align: center;
     margin: 2vh 0;
