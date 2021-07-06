@@ -194,12 +194,14 @@ export default class Game {
         if(this.allDivs[this.defenderPosition].classList.contains("invader", "defender")){
             this.score.innerHTML = `Score : ${36 - this.invaders.length} <br> <span id="game-over"><i class="far fa-grimace"></i> Aïe ! Game Over <i class="far fa-grimace"></i></span>`,
             clearInterval(this.invaderId);
+            this.resetGame();
         }
     
         for(let i = 0; i < this.invaders.length; i++){
             if(this.invaders[i] > this.allDivs.length - this.width){
                 this.score.innerHTML = `Score : ${36 - this.invaders.length} <br> <span id="game-over"><i class="far fa-grimace"></i> Aïe ! Game Over <i class="far fa-grimace"></i></span>`,
-                clearInterval(this.invaderId); 
+                clearInterval(this.invaderId);
+                this.resetGame(); 
             }
         }
     
@@ -243,7 +245,8 @@ export default class Game {
     
                 this.destroyedInvaders === 36 ?(
                     this.score.innerHTML = `Score : ${this.displayScore()} <br> <span id="victory"><i class="fas fa-trophy"></i> Bravo ! Vous avez gagné <i class="fas fa-trophy"></i></span>`,
-                    clearInterval(this.invaderId)
+                    clearInterval(this.invaderId),
+                    this.resetGame()
                 ):(
                     this.score.innerHTML = `Score : ${this.displayScore()}`
                 );
@@ -267,6 +270,13 @@ export default class Game {
             laserId = setInterval(() => moveFire(), 100);
         }
     
+    }
+
+    resetGame = () => {
+        this.container.innerHTML = "";
+        setTimeout(() => {
+            this.score.innerHTML = "Score : -- ";
+        }, 5000);
     }
 
 }

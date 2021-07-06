@@ -1,13 +1,22 @@
 import Game from "./game.js";
 
+const $buttons = document.querySelectorAll(".nav");
+const level = [500, 250, 150];
 const $container = document.querySelector(".grid");
 const $score = document.querySelector("h3");
 let invaderId;
 
-const app = new Game($container, $score, invaderId, 500);
-app.buildGridAndInvadersAndDefender();
-app.intervalInvaderId();
+for(let i = 0; i < level.length; i ++){
 
-// Listening user's actions
-document.addEventListener("keydown", event => app.handleEvent(event));
-document.addEventListener("keyup", event => app.handleEvent(event));
+    $buttons[i].addEventListener("click", () =>{
+    
+        const app = new Game($container, $score, invaderId, level[i]);
+        app.buildGridAndInvadersAndDefender();
+        app.intervalInvaderId();
+        // Listening user's actions
+        document.addEventListener("keydown", event => app.handleEvent(event));
+        document.addEventListener("keyup", event => app.handleEvent(event));
+    
+    });
+
+}
