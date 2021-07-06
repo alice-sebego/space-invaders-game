@@ -9,7 +9,10 @@ let invaderId;
 for(let i = 0; i < level.length; i ++){
 
     $buttons[i].addEventListener("click", () =>{
-    
+        
+        $container.innerHTML = "";
+        $score.innerHTML = "Score : --";
+        // Build and lauch game
         const app = new Game($container, $score, invaderId, level[i]);
         app.buildGridAndInvadersAndDefender();
         app.intervalInvaderId();
