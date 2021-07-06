@@ -6,6 +6,9 @@ const $container = document.querySelector(".grid");
 const $score = document.querySelector("h3");
 let invaderId;
 
+// Set more accessibility on buttons of nav
+$buttons.forEach(button => button.setAttribute("tabindex", "0"));
+
 for(let i = 0; i < level.length; i ++){
 
     $buttons[i].addEventListener("click", () =>{

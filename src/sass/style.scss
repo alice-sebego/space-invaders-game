@@ -44,7 +44,7 @@ header{
 nav{
 
     width: 30%;
-    margin: 1vh auto;
+    margin: 2vh auto;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -59,6 +59,11 @@ nav{
         letter-spacing: .02em;
         text-transform: uppercase;
         color: $light-color;
+        transition: box-shadow 0.8 ease-in-out;
+
+        &:hover{
+            box-shadow: .1em .1em .3em $grey-light-color;
+        }
     }
 
     .nav:nth-child(1){

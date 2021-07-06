@@ -200,7 +200,7 @@ export default class Game {
     
         for(let i = 0; i < this.invaders.length; i++){
             if(this.invaders[i] > this.allDivs.length - this.width){
-                this.allDivs[this.defenderPosition].classList.add("laser");
+                this.allDivs[this.defenderPosition].classList.add("boom");
                 this.score.innerHTML = `Score : ${36 - this.invaders.length} <br> <span id="game-over"><i class="far fa-grimace"></i> Aïe ! Game Over <i class="far fa-grimace"></i></span>`,
                 clearInterval(this.invaderId);
                 this.resetGame(); 

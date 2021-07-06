@@ -36,7 +36,7 @@ header {
 
 nav {
   width: 30%;
-  margin: 1vh auto;
+  margin: 2vh auto;
   display: flex;
   flex-direction: row;
   justify-content: space-around; }
@@ -49,7 +49,10 @@ nav {
     font-weight: bold;
     letter-spacing: .02em;
     text-transform: uppercase;
-    color: #eee; }
+    color: #eee;
+    transition: box-shadow 0.8 ease-in-out; }
+    nav .nav:hover {
+      box-shadow: 0.1em 0.1em 0.3em #aaa; }
   nav .nav:nth-child(1) {
     background: #14810b; }
   nav .nav:nth-child(2) {
