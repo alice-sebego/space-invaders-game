@@ -43,14 +43,15 @@ header{
 
 nav{
 
-    width: 30%;
+    width: 50%;
     margin: 2vh auto;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-
+    justify-content: center;
+    
     .nav{
-        width: 30%;
+        margin: 0 1vw;
+        width: 25%;
         padding: .4em;
         font-size: .9em;
         border-radius: .5em;
@@ -76,6 +77,10 @@ nav{
 
     .nav:nth-child(3){
         background: $hard;
+    }
+
+    .nav:nth-child(4){
+        background: $primary-color;
     }
 
 }
