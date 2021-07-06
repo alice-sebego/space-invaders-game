@@ -10,30 +10,11 @@ export default class Game {
     getDownLeft = true;
     getDownRight = true;
 
-    constructor(container, score, invaderId){
+    constructor(container, score, invaderId, speed){
         this.container = container;
         this.score = score;
         this.invaderId = invaderId;
-    }
-
-    get allDivs(){
-        return this.allDivs;
-    }
-
-    get defenderPosition(){
-        return this.defenderPosition;
-    }
-
-    get width(){
-        return this.width;
-    }
-
-    get destroyedInvaders(){
-        return this.destroyedInvaders;
-    }
-
-    get invaders(){
-        return this.invaders;
+        this.speed = speed;
     }
 
     displayScore = () => {
@@ -108,13 +89,23 @@ export default class Game {
             case "ArrowRight":
                 if(this.defenderPosition < 239) this.defenderPosition += 1;
                 break;
-            default:
-                console.log("Autre opération");
-                break;
         }
     
         this.allDivs[this.defenderPosition].classList.add("defender");
       
+    }
+
+    handleEvent = (event) => {
+        
+        switch(event.type) {
+            case "keydown":
+                this.movedefender(event);
+            break;
+            case "keyup":
+                this.fire(event);
+            break;
+        }
+
     }
 
     moveInvaders = () => {
@@ -179,9 +170,56 @@ export default class Game {
     
     }
 
-    intervalInvaderId(){
-         this.invaderId = setInterval(this.moveInvaders, 500);
+    intervalInvaderId = () => {
+         this.invaderId = setInterval(this.moveInvaders, this.speed);
          return this.invaderId;
+    }
+
+    fire = (event) => {
+
+        event.preventDefault();
+    
+        let laserId;
+        let currentLaser = this.defenderPosition; 
+    
+        const moveFire = () => {
+    
+            this.allDivs[currentLaser].classList.remove("laser");
+            currentLaser -= this.width;
+            this.allDivs[currentLaser].classList.add("laser");
+    
+            if(this.allDivs[currentLaser].classList.contains("invader")){
+                
+                this.allDivs[currentLaser].classList.remove("laser");
+                this.allDivs[currentLaser].classList.remove("invader");
+                this.allDivs[currentLaser].classList.add("boom");
+    
+                this.destroyedInvaders === 36 ?(
+                    this.score.innerHTML = `Score : ${this.displayScore()} <br> <span id="victory"><i class="fas fa-trophy"></i> Bravo ! Vous avez gagné <i class="fas fa-trophy"></i></span>`,
+                    clearInterval(this.invaderId)
+                ):(
+                    this.score.innerHTML = `Score : ${this.displayScore()}`
+                );
+                
+                this.invaders = this.invaders.filter(invader => invader !== currentLaser);
+    
+                setTimeout(() => this.allDivs[currentLaser].classList.remove("boom"), 250);
+    
+                clearInterval(laserId);
+            }
+    
+            if(currentLaser < this.width){
+                
+                clearInterval(laserId);
+                setTimeout(() => this.allDivs[currentLaser].classList.remove("laser"), 100);
+    
+            }
+        }
+        
+        if(event.code === "Space"){
+            laserId = setInterval(() => moveFire(), 100);
+        }
+    
     }
 
 }
