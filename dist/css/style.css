@@ -108,4 +108,16 @@ h3 {
 #game-over svg {
   color: #f11a13; }
 
+footer {
+  margin-top: 8vh;
+  padding: 2vh 2vw;
+  text-align: center;
+  color: #eee;
+  font-size: .9em;
+  background: #191919;
+  line-height: 1.8em; }
+  footer a {
+    color: #eee;
+    text-decoration: underline overline #3f3f3f; }
+
 /*# sourceMappingURL=style.css.map */

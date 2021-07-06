@@ -28,3 +28,8 @@ for(let i = 0; i < levels.length; i ++){
     });
 
 }
+
+// Add current year on thoe footer
+const $year = document.querySelector("#year");
+const date = new Date(Date.now());
+$year.textContent = `${date.getFullYear()}`;

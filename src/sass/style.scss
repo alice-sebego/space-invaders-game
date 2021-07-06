@@ -153,3 +153,18 @@ h3{
         color: $boom;
     }
 }
+
+footer{
+    margin-top: 8vh;
+    padding: 2vh 2vw;
+    text-align: center;
+    color: $light-color;
+    font-size: .9em;
+    background: $primary-color;
+    line-height: 1.8em;
+
+    a{
+        color: $light-color;
+        text-decoration: underline overline $dark-color;
+    }
+}
