@@ -10,13 +10,13 @@ Idem for SASS.
 * HTML5, SASS, JavaScript
 * Webpack 5 & Babel
 
-## Dependencies and CMD
+## Dependencies & cmd
 
 Install all dependencies and devDependencies : `npm install`
 
 Compile JS files : `npm run build`
 
-Watch changes of JS files : `npm run start`
+Watch changes of JS files : `npm run watch`
 
 Live app on your local server : `npm run start`
 
