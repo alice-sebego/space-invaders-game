@@ -34,6 +34,18 @@ header {
     font-weight: 400;
     letter-spacing: .08em; }
 
+#instruction {
+  padding: 2vh 4vw;
+  width: 50%;
+  margin: 1vh auto;
+  background: rgba(170, 170, 170, 0.2); }
+  #instruction span {
+    padding: .09em;
+    font-weight: bolder;
+    font-family: "Courier Prime", monospace;
+    background: #eee;
+    border: 1px dotted #3f3f3f; }
+
 nav {
   width: 50%;
   margin: 2vh auto;
@@ -53,7 +65,8 @@ nav {
     color: #eee;
     transition: box-shadow 0.8 ease-in-out; }
     nav .nav:hover {
-      box-shadow: 0.1em 0.1em 0.3em #aaa; }
+      box-shadow: 0.1em 0.1em 0.3em #aaa;
+      cursor: pointer; }
   nav .nav:nth-child(1) {
     background: #117408; }
   nav .nav:nth-child(2) {
@@ -121,6 +134,8 @@ footer {
   line-height: 1.8em; }
   footer a {
     color: #eee;
-    text-decoration: underline overline #3f3f3f; }
+    text-decoration: underline #3f3f3f; }
+    footer a:hover {
+      text-decoration: underline overline #aaa; }
 
 /*# sourceMappingURL=style.css.map */
